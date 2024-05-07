@@ -1,6 +1,7 @@
-# Ex-11-IMPLEMENTATION-OF-CALCULATOR-USING-LEX-AND-YACC-
-IMPLEMENTATION OF CALCULATOR USING LEX AND YACC 
-# Date :
+# Ex. No : 11
+# IMPLEMENTATION OF CALCULATOR USING LEX AND YACC
+## Register Number : 212223240037
+## Date : 18/04/2024
 # Aim :
 To implement a calculator using LEX and YACC.
 # ALGORITHM
@@ -13,7 +14,51 @@ To implement a calculator using LEX and YACC.
 7. Compile these with the C compiler as gcc lex.yy.c y.tab.c
 8. Enter an expression as input and it is evaluated and the answer is displayed as output.
 # PROGRAM
+### exp11.l
+```
+%{#include"y.tab.h"
+#include<math.h>%}
+%%
+([0-9]+|([0-9]*\.[0-9]+)([eE][-+]?[0-9]+)?) {yylval.dval=atof(yytext);return
+NUMBER;}
+log |
+LOG {return LOG;}
+In {return nLOG;}
+sin |
+SIN {return SINE;}
+cos |
+COS {return COS;}
+tan |
+TAN {return TAN;}
+mem {return MEM;}
+[\t];
+\$ return 0;
+\n|. return yytext[0];
+%%
+```
+### exp11.y
+```
+%{#include"y.tab.h"
+#include<math.h>%}
+%%
+([0-9]+|([0-9]*\.[0-9]+)([eE][-+]?[0-9]+)?) {yylval.dval=atof(yytext);return
+NUMBER;}
+log |
+LOG {return LOG;}
+In {return nLOG;}
+sin |
+SIN {return SINE;}
+cos |
+COS {return COS;}
+tan |
+TAN {return TAN;}
+mem {return MEM;}
+[\t];
+\$ return 0;
+\n|. return yytext[0];
+%%
+```
 # OUTPUT
+![image](https://github.com/GnanendranN/Ex-11-IMPLEMENTATION-OF-CALCULATOR-USING-LEX-AND-YACC-/assets/138955207/c8ed2ccc-3be0-4e01-807f-16c8d33d9114)
 # RESULT
 The calculator is implemented using LEX and YACC and the output is verified.
-
